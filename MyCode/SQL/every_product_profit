@@ -1,0 +1,10 @@
+WITH total AS(
+SELECT order_items.product_id, product_name, SUM(profit) AS total_profit FROM public.order_items
+JOIN product_catalog ON product_catalog.product_id = order_items.product_id
+GROUP BY order_items.product_id, product_name
+ORDER BY total_profit DESC
+),
+thats_all AS (
+    SELECT SUM(profit) AS total_products FROM public.order_items
+)
+SELECT product_id, product_name, total_profit, ROUND((total.total_profit / thats_all.total_products) * 100, 2) AS percentage FROM total, thats_all

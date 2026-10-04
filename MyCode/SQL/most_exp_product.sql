@@ -1,0 +1,1 @@
+SELECT product_name, product_category, unit_price, MAX(unit_price) OVER(PARTITION BY product_category ORDER BY unit_price DESC) AS most_exp_product FROM product_catalog
