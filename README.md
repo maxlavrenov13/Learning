@@ -2,7 +2,7 @@
 
 A collection of my data analytics practice: SQL queries, 
 results, and notes from my learning journey.
-
+Here is my plan in Excel:https://1drv.ms/x/c/9693d58c879da0f7/IQBXk5YT7X8MSLhX3pWRjCJOAVykPjHjVD7BEF_yunyvMqg?e=diOvmp
 ## Structure
 
 - `DataFiles/` — raw datasets
