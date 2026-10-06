@@ -46,3 +46,8 @@ LIMIT 200
 SELECT COUNT(order_items.product_id) AS cnt_rows, COUNT(DISTINCT order_items.order_id) AS cnt_orders, SUM(order_items.quantity) FROM order_items
 JOIN product_catalog ON product_catalog.product_id = order_items.product_id
 WHERE product_name = 'OnePlus Adaptive uniform success Gaming Consoles'
+SELECT SUM(profit)::NUMERIC FROM public.ecommerce_sales_customers
+SELECT * FROM public.customer_master LIMIT 3;
+SELECT * FROM public.ecommerce_sales_customers LIMIT 3;
+SELECT * FROM public.order_items LIMIT 3;
+SELECT * FROM public.product_catalog LIMIT 3;

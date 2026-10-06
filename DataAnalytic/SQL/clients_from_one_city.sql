@@ -1,0 +1,2 @@
+SELECT cm1.customer_id AS c1, cm2.customer_id AS c2, cm1.customer_name AS cn1, cm2.customer_name AS cn2, cm1.customer_city FROM customer_master cm1
+JOIN customer_master cm2 ON cm1.customer_city = cm2.customer_city AND cm2.customer_id < cm1.customer_id
