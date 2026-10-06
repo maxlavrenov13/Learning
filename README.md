@@ -22,7 +22,7 @@ results, and notes from my learning journey.
 
 - [x] SQL Basics (SELECT, WHERE, JOIN, GROUP BY)
 - [x] SQL Advanced (CTE, window functions)
-- [ ] CASE WHEN
+- [x] CASE WHEN
 - [ ] Excel
 - [ ] BI Tools
 - [ ] Python + pandas
