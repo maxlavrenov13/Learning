@@ -42,3 +42,12 @@ LIMIT 6 --Количество товаров у двух брендов оди�
 SELECT payment_method, AVG(net_sales) AS avg_sales FROM ecommerce_sales_customers
 GROUP BY payment_method
 ORDER BY avg_sales DESC
+--ЗАДАЧА 11.  Выведи все заказы со статусом `Returned` вместе с именем клиента и причиной возврата.
+SELECT customer_name, return_reason FROM ecommerce_sales_customers
+WHERE return_status = 'Returned'
+--ЗАДАЧА 12. Найди клиентов, у которых больше 10 заказов и `is_repeat_customer = 'True'`.
+SELECT customer_id, customer_name, COUNT(order_id) AS total_orders FROM ecommerce_sales_customers
+WHERE ecommerce_sales_customers.is_repeat_customer = 'True'
+GROUP BY customer_id, customer_name
+HAVING COUNT(order_id) > 10
+ORDER BY total_orders DESC
