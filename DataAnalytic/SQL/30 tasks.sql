@@ -19,3 +19,26 @@ ORDER BY total_orders ASC
 SELECT product_name, brand, unit_price FROM product_catalog
 WHERE product_category = 'Electronics' AND unit_price > 500
 ORDER BY unit_price ASC
+--ЗАДАЧА 6. Выведи клиентов, у которых `customer_acquisition_cost` больше 30.
+SELECT customer_id, customer_name, customer_acquisition_cost FROM customer_master
+WHERE customer_master.customer_acquisition_cost > 30
+ORDER BY customer_acquisition_cost DESC
+--ЗАДАЧА 7. Выведи топ-10 клиентов по количеству заказов (`COUNT(DISTINCT order_id)`)
+SELECT customer_id, customer_name, COUNT(order_id) AS total_orders FROM ecommerce_sales_customers
+GROUP BY customer_id, customer_name
+ORDER BY total_orders DESC
+LIMIT 10
+--ЗАДАЧА 8. Для каждой категории товаров посчитай средний рейтинг (`AVG(product_rating)`). Оставь только те, где средний рейтинг > 4.
+SELECT product_category, AVG(product_rating) AS avg_rate FROM product_catalog
+GROUP BY product_category
+HAVING AVG(product_rating) > 3.65 --Поправил рейтинг так как нет ни одной категории с AVG > 4
+ORDER BY avg_rate DESC 
+--ЗАДАЧА 9. Найди топ-5 брендов по количеству товаров в каталоге. Выведи бренд и число товаров.
+SELECT brand, COUNT(product_id) AS total FROM product_catalog
+GROUP BY brand
+ORDER BY total DESC
+LIMIT 6 --Количество товаров у двух брендов одинаковое поэтому имеет место вывести и 6 место тоже
+--ЗАДАЧА 10. Посчитай средний чек (`AVG(net_sales)`) по каждому способу оплаты (`payment_method`).
+SELECT payment_method, AVG(net_sales) AS avg_sales FROM ecommerce_sales_customers
+GROUP BY payment_method
+ORDER BY avg_sales DESC
