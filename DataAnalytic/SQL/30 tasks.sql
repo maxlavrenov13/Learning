@@ -51,3 +51,16 @@ WHERE ecommerce_sales_customers.is_repeat_customer = 'True'
 GROUP BY customer_id, customer_name
 HAVING COUNT(order_id) > 10
 ORDER BY total_orders DESC
+--ЗАДАЧА 13. Сегментируй клиентов по возрасту: `'<25'`, `'25-40'`, `'40-60'`, `'60+'`. Посчитай количество в каждом.
+WITH aSegments AS(
+SELECT customer_name, customer_age, CASE 
+WHEN customer_age > 60 THEN 'Old'
+WHEN customer_age > 40 THEN 'Middle'
+WHEN customer_age > 25 THEN 'Adult'
+WHEN customer_age > 60 THEN 'Young'
+ELSE 'Teen'
+END AS Age_Segment
+FROM customer_master
+)
+SELECT COUNT(*), Age_Segment FROM aSegments
+GROUP BY Age_Segment
