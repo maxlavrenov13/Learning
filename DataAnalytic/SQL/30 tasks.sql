@@ -57,7 +57,7 @@ SELECT customer_name, customer_age, CASE
 WHEN customer_age > 60 THEN 'Old'
 WHEN customer_age > 40 THEN 'Middle'
 WHEN customer_age > 25 THEN 'Adult'
-WHEN customer_age > 60 THEN 'Young'
+WHEN customer_age > 18 THEN 'Young'
 ELSE 'Teen'
 END AS Age_Segment
 FROM customer_master
