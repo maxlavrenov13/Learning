@@ -64,3 +64,25 @@ FROM customer_master
 )
 SELECT COUNT(*), Age_Segment FROM aSegments
 GROUP BY Age_Segment
+--ЗАДАЧА 14. Раздели товары на ценовые категории: `'Premium'` (>500), `'Mid'` (200–500), `'Budget'` (<200). Выведи топ-5 товаров по цене в каждой категории.
+WITH Segments AS(
+SELECT product_id, unit_price, CASE
+WHEN unit_price > 500 THEN 'Premium'
+WHEN unit_price > 200 THEN 'Mid'
+WHEN unit_price > 0 THEN 'Budget'
+END AS Unit_Segment
+FROM product_catalog
+),
+ranked AS (
+    SELECT product_id, unit_price, Unit_Segment, ROW_NUMBER() OVER(PARTITION BY Unit_Segment ORDER BY unit_price DESC) AS row_number
+    FROM Segments
+)
+SELECT * FROM ranked
+WHERE row_number < 6
+--ЗАДАЧА 15. Найди клиентов, у которых сумма покупок больше средней по всем клиентам.
+SELECT customer_id, SUM(net_sales) AS total FROM ecommerce_sales_customers
+GROUP BY customer_id
+HAVING SUM(net_sales) > (
+SELECT AVG(total_sales) AS average FROM (SELECT customer_id, SUM(net_sales) AS total_sales FROM ecommerce_sales_customers GROUP BY customer_id)
+)
+ORDER BY total DESC
