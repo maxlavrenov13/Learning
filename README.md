@@ -23,8 +23,8 @@ Here is my plan in Excel:https://1drv.ms/x/c/9693d58c879da0f7/IQBXk5YT7X8MSLhX3p
 - [x] SQL Basics (SELECT, WHERE, JOIN, GROUP BY)
 - [x] SQL Advanced (CTE, window functions)
 - [x] CASE WHEN
-- [ ] Excel(in process)
-- [ ] BI Tools
+- [x] Excel
+- [ ] BI Tools(in process)
 - [ ] Python + pandas
 
 ## Goals
