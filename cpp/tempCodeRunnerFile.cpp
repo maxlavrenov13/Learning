@@ -1,2 +1,0 @@
-
-        arr[high] = temp;

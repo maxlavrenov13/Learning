@@ -11,7 +11,7 @@ int main() {
     cout << "Second number: ";
     cin >> b;
     if (op == '+') {
-    cout << "Reasult: " << a + b << endl;
+    cout << "Result: " << a + b << endl;
     } else if (op == '-') {
         cout << "Result: " << a - b << endl;
     } else if (op == '*') {

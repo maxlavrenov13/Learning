@@ -86,3 +86,32 @@ HAVING SUM(net_sales) > (
 SELECT AVG(total_sales) AS average FROM (SELECT customer_id, SUM(net_sales) AS total_sales FROM ecommerce_sales_customers GROUP BY customer_id)
 )
 ORDER BY total DESC
+--ЗАДАЧА 16. Выведи заказы, где `delivery_days` больше `estimated_delivery_days` (опоздания).
+SELECT order_id, delivery_days FROM ecommerce_sales_customers
+WHERE delivery_days > estimated_delivery_days
+GROUP BY order_id, ecommerce_sales_customers.delivery_days
+--ЗАДАЧА 17. Найди товары, которые продавались чаще среднего (`COUNT(*)` > среднего по всем товарам).
+WITH total AS(
+SELECT COUNT(product_id) AS total_products FROM order_items
+GROUP BY product_id
+ORDER BY total_products DESC
+),
+average AS(
+    SELECT AVG(total_products) AS aver_sales FROM total
+)
+SELECT total_products FROM total, average
+WHERE total_products > average.aver_sales
+--ЗАДАЧА 18.  Найди товары, у которых `unit_price` больше средней цены по их категории.
+WITH average AS (
+    SELECT product_category, AVG(unit_price) AS average_category_price FROM product_catalog
+    GROUP BY product_category
+)
+SELECT DISTINCT(product_id), product_catalog.product_category, product_catalog.unit_price FROM product_catalog, average
+WHERE product_catalog.product_category = average.product_category
+  AND product_catalog.unit_price > average.average_category_price
+ORDER BY product_id ASC
+--ЗАДАЧА 19. Через CTE найди топ-10 клиентов по сумме покупок и их средний чек.
+SELECT customer_name, customer_id, SUM(net_sales) AS sum_sales, AVG(net_sales) AS average_sale FROM ecommerce_sales_customers
+GROUP BY customer_id, customer_name
+ORDER BY sum_sales DESC
+LIMIT 10
