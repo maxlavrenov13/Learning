@@ -9,7 +9,7 @@ Here is my plan in Excel:https://1drv.ms/x/c/9693d58c879da0f7/IQBXk5YT7X8MSLhX3p
 - `sql/` — SQL queries (JOINs, CTEs, window functions)
 - `results/` — CSV files generated from queries
 - `Arduino/` — future projects (in progress)
-
+- `cpp/` — C++ code
 ## Tech Stack
 
 - **PostgreSQL** — main database
@@ -17,14 +17,14 @@ Here is my plan in Excel:https://1drv.ms/x/c/9693d58c879da0f7/IQBXk5YT7X8MSLhX3p
 - **Python** — basics (in progress)
 - **Excel** — in plans
 - **Power BI** — in plans
-
+- **C++** — in process
 ## Progress
 
 - [x] SQL Basics (SELECT, WHERE, JOIN, GROUP BY)
 - [x] SQL Advanced (CTE, window functions)
 - [x] CASE WHEN
 - [x] Excel
-- [ ] BI Tools(in process)
+- [x] BI Tools
 - [ ] Python + pandas
 
 ## Goals
