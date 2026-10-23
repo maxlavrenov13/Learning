@@ -12,13 +12,15 @@ int main() {
     num[i]++;
     }
     for(int i = 0;i < 8;i++){
-        cout<<"Элемент "<<i<<" массива num, но на единицу больше: "<<num[i]<<endl;
+    cout<<"Элемент "<<i<<" массива num, но на единицу больше: "<<num[i]<<endl;
     }
+    
     int z = 0;
     for(int i = 0;i < 8;i++){
         z = z + num[i];
     }
     cout<<"Сумма элементов массива:"<<z<<endl;
+    
     int temp = num[0];
     for(int i = 0; i < 8;i++){
         if(num[i] > temp){
@@ -26,6 +28,7 @@ int main() {
         }
     }
     cout<<"Наибольший элемент: "<<temp<<endl;
+    
     int count = 0;
     for(int i = 0;i < 8;i++){
         if(num[i] % 2 == 0){
